@@ -7,7 +7,7 @@ import torch
 app = FastAPI(title="Classificador de Texto com FastAPI")
 
 # Carregar o modelo e tokenizer
-model_name = "Lorero/bert-treinado-pedidos"
+model_name = "Lorero/bert-treinado-pedidos-completo"
 tokenizer = AutoTokenizer.from_pretrained(model_name)
 model = AutoModelForSequenceClassification.from_pretrained(model_name)
 
