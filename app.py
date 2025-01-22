@@ -6,10 +6,23 @@ import torch
 # Inicializar a FastAPI
 app = FastAPI(title="Classificador de Texto com FastAPI")
 
+model_commit_hash = "584cc00e0b4d26ba20e6dc4f68c7e611c2f92f2f"
+tokenizer_commit_hash = "ad7d1802b23f2629d67bcc99fa47c6e68842d743"
+
+
 # Carregar o modelo e tokenizer
 model_name = "Lorero/bert-treinado-pedidos-completo"
-tokenizer = AutoTokenizer.from_pretrained(model_name)
-model = AutoModelForSequenceClassification.from_pretrained(model_name)
+tokenizer = AutoTokenizer.from_pretrained(model_name, revision = tokenizer_commit_hash)
+model = AutoModelForSequenceClassification.from_pretrained(model_name, revision = model_commit_hash )
+
+##model_name = "Lorero/bert-treinado-pedidos-completo"
+#tokenizer = AutoTokenizer.from_pretrained(model_name)
+#model = AutoModelForSequenceClassification.from_pretrained(model_name)
+
+##model_name = "Lorero/bert-treinado-pedidos-completo-v2"
+##tokenizer = AutoTokenizer.from_pretrained(model_name)
+##model = AutoModelForSequenceClassification.from_pretrained(model_name)
+
 
 # Modelo de dados para entrada
 class TextInput(BaseModel):
